@@ -1,0 +1,22 @@
+{
+  "name": "2018-fs-11-frontend-kerechanina",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Minrael/2018-FS-11-Frontend-Kerechanina.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Minrael/2018-FS-11-Frontend-Kerechanina/issues"
+  },
+  "homepage": "https://github.com/Minrael/2018-FS-11-Frontend-Kerechanina#readme",
+  "description": "",
+  "devDependencies": {
+    "webpack": "^4.20.2"
+  }
+}
