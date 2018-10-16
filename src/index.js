@@ -1,2 +1,4 @@
-import say from './lib/test.js';
-say('Javascript');
+
+import sqv from './lib/test.js'; 
+
+sqv();
