@@ -1,4 +1,3 @@
-
-import sqv from './lib/test.js'; 
+import sqv from './lib/test.js';
 
 sqv();
