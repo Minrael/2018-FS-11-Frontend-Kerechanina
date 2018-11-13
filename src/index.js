@@ -1,3 +1,1 @@
-import sqv from './lib/test.js';
-
-sqv();
+require('./lib/test.js');
