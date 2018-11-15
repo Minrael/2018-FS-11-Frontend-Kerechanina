@@ -11,7 +11,7 @@ const template = `
 		<div class="result"></div>
 		<div class="friend_message">"Hello!"</div>
 
-		<form-input name="message_text" placeholder="Введите сообщеине" slot="message-input">
+		<form-input name="message_text" placeholder="Cообщеине" slot="message-input">
 			<span slot="icon"></span>
 		</form-input>
 	</form>
@@ -50,6 +50,7 @@ class MessageForm extends HTMLElement {
 
 	_addHandlers () {
 		this._elements.form.addEventListener('submit', this._onSubmit.bind(this));
+		/*this._elements.form.addEventListener('click', this._onAttach.bind(this));*/
 		this._elements.form.addEventListener('keypress', this._onKeyPress.bind(this));
 
 		
@@ -64,6 +65,10 @@ class MessageForm extends HTMLElement {
 		event.preventDefault();
 		return false;
 	}
+
+       /*_onAttach (event) {
+
+       }*/
 
 	_onKeyPress (event) {
 		if (event.keyCode == 13) {

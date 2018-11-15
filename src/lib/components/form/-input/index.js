@@ -4,8 +4,12 @@ import shadowStyles from './shadow.css';
 const template = `
 	<style>${shadowStyles.toString()}</style>
 	<input />
+	<attach_button><img src="https://icon-icons.com/icon/attach-rotated/68593"></attach_button>
 	<slot name="icon"></slot>
 `;
+
+
+//../../../../../../static/attach-rotated_icon-icons.com_68593.png
 
 //const iconTemplate = `
 //	<div class="${styles.icon}" />
@@ -36,16 +40,18 @@ class FormInput extends HTMLElement {
 	_initElements () {
 		var hiddenInput = document.createElement('input');
 		var input = this.shadowRoot.querySelector('input');
+		var attach_button = this.shadowRoot.querySelector('attach_button');
 		this.appendChild(hiddenInput);
 		this._elements = {
 			input: input,
-			hiddenInput: hiddenInput
+			hiddenInput: hiddenInput,
+			attach_button: attach_button
 		};
 	}
 
 	_addHandlers () {
 		this._elements.input.addEventListener('input', this._onInput.bind(this));
-		//this._elements.button.addEventListener('click', this._onAttach.bind(this));
+		/*this._elements.attach_button.addEventListener('click', this._onAttach.bind(this));*/
 	}
 
 	_onInput () {
