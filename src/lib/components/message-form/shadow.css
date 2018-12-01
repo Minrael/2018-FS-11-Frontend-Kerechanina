@@ -1,6 +1,5 @@
 form-input {
 	padding: 10px 5px;
-	width: 100%;
 	display: flex;
 	justify-content: flex-end;
 	font-size: 40px
@@ -12,16 +11,6 @@ form-input {
 
 input[type=submit] {
 	visibility: collapse;
-}
-
-.m {
-	color: black;
-	background: #D9B5D9;
-	padding: 15px;
-	margin-top: 15px;
-	margin-bottom: 15px;
-	align-self: flex-end;
-	font-size: 40px
 }
 
 form {

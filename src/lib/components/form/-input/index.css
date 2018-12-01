@@ -1,14 +1,12 @@
-.pseudo {
+/*.pseudo {
 	visibility: hidden;
 }
 
 message-form{
 	display: flex;
 	flex-direction: column;
-	/*justify-content: flex-end;*/
-	/*flex-grow:1;*/
-}
+	justify-content: flex-end;
+	flex-grow:1;
+}*/
 
-img {
-	height: 12px;
-}
+

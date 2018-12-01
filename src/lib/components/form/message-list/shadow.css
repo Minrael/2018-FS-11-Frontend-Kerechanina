@@ -1,0 +1,46 @@
+form-input {
+	padding: 10px 5px;
+	display: flex;
+}
+
+.result {
+	color: #ffb270;
+	padding: 10px 0px;
+}
+
+input[type=submit] {
+	visibility: collapse;
+	flex-basis: 300px;
+}
+
+form {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	margin-bottom: 5px;
+}
+
+.message {
+	color: black;	
+	background: #C691D4;
+	padding: 0px 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	align-self: flex-end;
+	font-size: 40px
+}
+.friend_message {
+	background: #EDDEF2;
+	padding: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	align-self: flex-start;
+	font-size: 40px
+}
+
+img {
+	width: 90%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	align-self: flex-end;
+}

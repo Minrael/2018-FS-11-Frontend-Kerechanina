@@ -12,11 +12,16 @@ input {
 }
 
 img {
-	height: 15px;
+	height: 50px;
 }
 
 button {
-	padding: 4px 5px 0px 8px;
 	background: white;
 	border: none;
 }
+
+.attachButoon {
+	background: white;
+	border: none;
+}
+		

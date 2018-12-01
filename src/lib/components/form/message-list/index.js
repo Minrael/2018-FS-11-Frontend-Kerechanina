@@ -1,20 +1,13 @@
 //import styles from './index.css';
 import shadowStyles from './shadow.css';
 
-const slotName = 'message-input';
+//const slotName = 'message-input';
 
 const template = `
-	<style>${shadowStyles.toString()}
+	<style>${shadowStyles.toString()}</style>
+	<div id="container"></div>
+	<div class="friend_message">Hi!</div>
 
-	</style>
-	<form>
-		<div class="result"></div>
-		<div class="friend_message">"Hello!"</div>
-
-		<form-input name="message_text" placeholder="Введите сообщеине" slot="message-input">
-			<span slot="icon"></span>
-		</form-input>
-	</form>
 `;
 
 class MessageList extends HTMLElement {
@@ -26,37 +19,69 @@ class MessageList extends HTMLElement {
 		this._addHandlers();
 	}
 
-	static get observedAttributes() {
-		return [
-			"action",
-			"method"
-		]
-	}
-
-	attributeChangedCallback(attrName, oldVal, newVal) {
-		this._elements.form[attrName] = newVal;
-	}
 
 	_initElements () {
-		var form = this.shadowRoot.querySelector('form');
-		var message = this.shadowRoot.querySelector('.result');
+		var mesForm = document.querySelector('message-form');
+		var input = document.querySelector('message-list');
+		var form = mesForm.shadowRoot.querySelector('form');
+		var forminp = mesForm.shadowRoot.querySelector('form-input');
+		var submitButton = forminp.shadowRoot.getElementById('submit');
+		var attachButton = forminp.shadowRoot.getElementById('attach');
 
 		this._elements = {
 			form: form,
-			message: message
-
-		};
+			mesForm: mesForm,
+			input: input,
+			submitButton: submitButton,
+			attachButton: attachButton,
+			forminp: forminp
+		};	
 	}
 
 	_addHandlers () {
-		this._elements.form.addEventListener('submit', this._onSubmit.bind(this));
-		this._elements.form.addEventListener('keypress', this._onKeyPress.bind(this));
 
-		
+		this._elements.forminp.addEventListener('keypress', this._onKeyPress.bind(this), true);
+		this._elements.submitButton.addEventListener('click', this._onSubmit.bind(this));
+		this._elements.attachButton.addEventListener('change', this._loadFile.bind(this), false);
 	}
 
-	_onAddMessage (event) {
-		var message = 
+	_onKeyPress(event) {
+		if (event.keyCode == 13) {
+			var div = document.createElement('div');
+			if (this._elements.form.elements[0].value) {
+				var text = this._elements.form.elements[0].value;
+				div.innerHTML = text;
+				div.className = 'message';
+				this.shadowRoot.appendChild(div);
+			}
+		}
+	}
+
+	_onSubmit(event) {
+		var div = document.createElement('div');
+		var text = this._elements.form.elements[0].value;
+		div.innerHTML = text;
+		div.className = 'message';
+		this.shadowRoot.appendChild(div);
+	
+	}
+
+	_loadFile(event) {
+		var file = evt.target.files[0];
+		var reader = new FileReader();
+
+		reader.onload = (function (theFile) {
+			return function(e) {
+				//var extension = f.name.split('.').pop().toLowerCase();
+
+				var div = document.createElement('div');
+				div.innerHTML = '<p>File: ' + f.name + ', size: ' + f.size + ' Byte.' + '</p>';
+				div.className = 'message';
+				this.shadowRoot.appendChild(div);
+				}
+			
+		})(file);
+		reader.readAsDataURL(file);
 
 	}
 
