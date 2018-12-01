@@ -1,11 +1,37 @@
+nav{
+	flex-basis: 80px;
+	background: #8e24aa;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
 body {
 	padding:0;
-	display:flex;
+	display: flex;
 	flex-direction: column;
 	flex-basis: 50px;
 	height: 100vh;
 }
 
+message-form{
+      	flex-basis: 120px;
+	width: 100%;
+}
+
 message-list {
 	flex-grow: 1;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	font-size: 20px;
 }
+
+.page{
+	height: 100%;
+	display: flex;
+	flex-direction: column;    
+}
+
+

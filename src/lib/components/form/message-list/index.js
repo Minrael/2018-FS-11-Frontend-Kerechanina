@@ -66,25 +66,25 @@ class MessageList extends HTMLElement {
 	
 	}
 
-	_loadFile(event) {
+
+	_loadFile(evt) {
+		var add = this.shadowRoot;
 		var file = evt.target.files[0];
 		var reader = new FileReader();
 
 		reader.onload = (function (theFile) {
 			return function(e) {
-				//var extension = f.name.split('.').pop().toLowerCase();
 
-				var div = document.createElement('div');
-				div.innerHTML = '<p>File: ' + f.name + ', size: ' + f.size + ' Byte.' + '</p>';
-				div.className = 'message';
-				this.shadowRoot.appendChild(div);
-				}
-			
+					var div = document.createElement('div');
+					div.innerHTML = reader.result;
+					div.className = 'message';
+					add.appendChild(div);
+
+			};
 		})(file);
 		reader.readAsDataURL(file);
-
+	
 	}
-
 
 }
 
