@@ -11,7 +11,7 @@ ${shadowStyles.toString()}
 		
 	</style>
 	<form>
-		<form-input name="message_text" placeholder="Cообщение" slot="message-input">
+		<form-input name="message_text" slot="message-input">
 		</form-input>
 	</form>
 `;

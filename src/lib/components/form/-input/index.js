@@ -3,7 +3,7 @@ import shadowStyles from './shadow.css';
 
 const template = `
 	<style>${shadowStyles.toString()}</style>
-	<input type = "text">
+	<input type = "text" name="message_text" placeholder="Cообщение">
 	<button id = "submit"><img src="../../static/mailsend_104372.png"></button>
 	<label for="attach" class="attachButton">
 		<img src="../../static/attach-rotated_icon-icons.com_68593.png">
@@ -41,6 +41,7 @@ class FormInput extends HTMLElement {
 		this._elements.input[attrName] = newVal;
 	}
 
+
 	_initElements () {
 		var hiddenInput = document.createElement('input');
 		var input = this.shadowRoot.querySelector('input');
@@ -64,6 +65,17 @@ class FormInput extends HTMLElement {
 
 	_onInput () {
 		this._elements.hiddenInput.value = this._elements.input.value;
+	}
+
+	_geoposition() {
+
+		function getPosition (opts) {
+			return new Promise((resolve, reject) => {
+				navigator.geolocation.getCurrentPosition(resolve, error, opts);
+			});
+		}
+		getPosition().then((position) => this._elements.input.value(position.coords));
+		
 	}
 }
 
