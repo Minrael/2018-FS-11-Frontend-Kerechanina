@@ -63,8 +63,35 @@ class MessageList extends HTMLElement {
 		div.innerHTML = text;
 		div.className = 'message';
 		this.shadowRoot.appendChild(div);
+
+
+		var myHeaders = new Headers();
+
+		var formData = new FormData();
+		formData.append("message", text);
+
+		var myInit = {
+			method: 'POST',
+			body: formData,
+			mode: 'cors',
+			cache: 'default'
+		}
+
+		fetch('http://localhost:8081', {mode: 'no-cors'}, myInit).then(function(response) {
+			console.log('0');
+			return response.blob();
+		}).then(function(response) {
+			var div = document.querySelector('message-list').shadowRoot.lastElementChild;
+			div.innerHTML = text;		
+		});	
+
 	
 	}
+
+
+
+
+
 
 
 	_loadFile(evt) {
@@ -83,8 +110,18 @@ class MessageList extends HTMLElement {
 			};
 		})(file);
 		reader.readAsDataURL(file);
+
+}
+
+/*	function loadImage (src) {
+   		return new Promise((resolve, reject) => {
+        		imgeElem = new Image();
+        		imageElem.onload = event => resolve(imageElem);
+        		imaeElem.onerror = reject;
+        		imageElem.src = src;
+    		}};
 	
-	}
+	}*/
 
 }
 
