@@ -3,13 +3,21 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>Create message</title>
-	<style></style>
+	<style>
+	.page{
+		height: 100%;
+		display: flex;
+		flex-direction: column;    
+	}
+	</style>
 </head>
 <body>
-    <div class="block">
+    <div class="page">
 	<nav>
 	</nav>
-	<message-form action="/">
+	<message-list>
+	</message-list>
+	<message-form action="http://localhost:8081" method="post"">
 	</message-form>
     </div>
 </body>

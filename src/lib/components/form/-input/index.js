@@ -3,13 +3,17 @@ import shadowStyles from './shadow.css';
 
 const template = `
 	<style>${shadowStyles.toString()}</style>
-	<input />
-	<attach_button><img src="https://icon-icons.com/icon/attach-rotated/68593"></attach_button>
-	<slot name="icon"></slot>
+	<input type = "text" name="message_text" placeholder="Cообщение">
+	<button id = "submit"><img src="../../static/mailsend_104372.png"></button>
+	<label for="attach" class="attachButton">
+		<img src="../../static/attach-rotated_icon-icons.com_68593.png">
+	</label>
+	<input type="file" id="attach" name="input" style="display:none">
+	<button id="geoposition">
+		<img src="../../static/locationmarker_102659.png ">
+	</button>
 `;
 
-
-//../../../../../../static/attach-rotated_icon-icons.com_68593.png
 
 //const iconTemplate = `
 //	<div class="${styles.icon}" />
@@ -37,25 +41,41 @@ class FormInput extends HTMLElement {
 		this._elements.input[attrName] = newVal;
 	}
 
+
 	_initElements () {
 		var hiddenInput = document.createElement('input');
 		var input = this.shadowRoot.querySelector('input');
-		var attach_button = this.shadowRoot.querySelector('attach_button');
+		var button = this.shadowRoot.querySelector('button');
+		var geoButton = this.shadowRoot.querySelector('geoposition');
 		this.appendChild(hiddenInput);
 		this._elements = {
 			input: input,
 			hiddenInput: hiddenInput,
-			attach_button: attach_button
+			button: button,
+			geoButton: geoButton
 		};
 	}
 
+
 	_addHandlers () {
 		this._elements.input.addEventListener('input', this._onInput.bind(this));
-		/*this._elements.attach_button.addEventListener('click', this._onAttach.bind(this));*/
+		this._elements.button.addEventListener('click', this._onInput.bind(this));
+		this._elements.geoButton.addEventListener('click', this._geoposition.bind(this));
 	}
 
 	_onInput () {
 		this._elements.hiddenInput.value = this._elements.input.value;
+	}
+
+	_geoposition() {
+
+		function getPosition (opts) {
+			return new Promise((resolve, reject) => {
+				navigator.geolocation.getCurrentPosition(resolve, error, opts);
+			});
+		}
+		getPosition().then((position) => this._elements.input.value(position.coords));
+		
 	}
 }
 
