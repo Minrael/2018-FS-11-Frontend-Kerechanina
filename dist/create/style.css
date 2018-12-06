@@ -28,10 +28,22 @@ message-list {
 	font-size: 20px;
 }
 
-.page{
+.index__page___2D4SI{
 	height: 100%;
 	display: flex;
 	flex-direction: column;    
 }
+
+
+/*.pseudo {
+	visibility: hidden;
+}
+
+message-form{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	flex-grow:1;
+}*/
 
 
