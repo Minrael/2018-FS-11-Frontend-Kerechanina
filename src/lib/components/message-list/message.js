@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import '../../../App.css';
 
 class Message extends Component {
 
@@ -17,9 +17,8 @@ class Message extends Component {
       const props = this.props;
 
       return (
-        <div>
-		<p> {this.props.txtMessage} </p>
-		<p> {this.props.fileMessage} </p>
+        <div name = "Message">
+		<p> {this.props.txt} </p>
         </div>
 	);
 

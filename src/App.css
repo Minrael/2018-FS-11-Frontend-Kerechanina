@@ -38,6 +38,15 @@ body {
 
 }
 
+.Message {
+	background: #EDDEF2;
+	padding: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	align-self: flex-start;
+	font-size: 40px
+}
+
 #input_form {
 	display: flex;
 }

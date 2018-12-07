@@ -15,6 +15,7 @@ class App extends Component {
 			file: 'I am loaded file',
 			geoposition: ''
 			
+			
 		}
      this.updateMessage = this.updateMessage.bind(this);
      this.updateFile = this.updateFile.bind(this);
@@ -35,9 +36,8 @@ class App extends Component {
 	    <div id = "app">
 
 		<nav />
-		
-		<Message txtMessage = {this.state.text} fileMessage = {this.state.file}/>
-		<InputForm updateMessage = {this.updateMessage}/>
+		<MessageList txtMessage = {this.state.text} />
+		<InputForm updateMessage = {this.updateMessage} updateFile = {this.updateFile}/>
 	    </div>
         );
       }
