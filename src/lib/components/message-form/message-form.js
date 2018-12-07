@@ -22,9 +22,6 @@ class MessageForm extends Component {
 		return (
 		<div>
 		    <form id="message-form">
-			<button id="submit_button">
-				<img src={ submit }></img>
-			</button>
 		    </form>
 		</div>
 		

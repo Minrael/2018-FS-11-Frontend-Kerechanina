@@ -1,26 +1,46 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
-import  LoginForm  from './loginForm.js';
 import  MessageList  from './lib/components/message-list/message-list.js';
 import  InputForm  from './lib/components/input/input-form.js';
-import  MessageForm  from './lib/components/message-form/message-form.js';
+import Message from './lib/components/message-list/message.js';
+
 
 class App extends Component {
-  render() {
-    console.log('0');
-    return (
-	<div id = "app">
+  
+    constructor(props) {
+      super(props);
+		this.state = {
 
-		<nav>
-		</nav>
-		<form />
-		<MessageList />
-		<InputForm />
-		<MessageForm />
-	</div>
-    );
-  }
-}
+			text: 'I am a text message',
+			file: 'I am loaded file',
+			geoposition: ''
+			
+		}
+     this.updateMessage = this.updateMessage.bind(this);
+     this.updateFile = this.updateFile.bind(this);
+    }
+
+
+    updateMessage(text) {
+    	this.setState({text});
+    }
+
+
+    updateFile(file) {
+    	this.setState({file});
+    }
+
+    render() {
+        return (
+	    <div id = "app">
+
+		<nav />
+		
+		<Message txtMessage = {this.state.text} fileMessage = {this.state.file}/>
+		<InputForm updateMessage = {this.updateMessage}/>
+	    </div>
+        );
+      }
+    }
 
 export default App;
