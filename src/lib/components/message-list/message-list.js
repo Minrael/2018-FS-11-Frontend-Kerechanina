@@ -28,8 +28,8 @@ class MessageList extends Component {
 	render() {
 
 		return (
-		<div>
-			<Message id = "friend_message" txt = 'Hello, friend!' />
+		<div id = "message_list">
+			<div id = "friend_message"> Hello, friend!</div>
 
 		{ this.state.messages.map((item, index) => {return <Message txt = {this.state.messages[index]} key = {index} />}) }
 		</div>

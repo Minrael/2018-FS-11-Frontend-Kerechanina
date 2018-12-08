@@ -11,8 +11,7 @@ class InputForm extends Component {
     constructor(props) {
       super(props);
       this.state = {
-		input: ''
-		
+		input: ''	
       };
 
       this.onInputChange = this.onInputChange.bind(this);
@@ -23,6 +22,7 @@ class InputForm extends Component {
       event.preventDefault();
       if (this.state.input != '') {
 	this.props.updateMessage(this.state.input);
+	this.setState({input: ''});
       }
     }
 
@@ -31,25 +31,20 @@ class InputForm extends Component {
     }
 
     geoposition() {
+	function getPosition (opts) { 
+		return new Promise((resolve, reject) => { 
+			navigator.geolocation.getCurrentPosition(console.log, opts); 
 
-        function getPosition (opts) {
-        	return new Promise((resolve, reject) => {
-			navigator.geolocation.getCurrentPosition(resolve, opts);
-		});
-	};
-	return getPosition();
+		}); 
+	} 
 
+	getPosition().then((position) => {
+
+			this.setState({input: position.coords.latitude});
+			console.log(this.state.input);
+			console.log(position.coords.latitude);
+	})
     }
-
-
-    fillForm() { 
-	this.geoposition().then(result => this.setState({value: result.coords.latitude})); 
-    }
-
-  /*  onGeopositionChange(event) {
-    	this.setState({input: this.geoposition().coords.latitude});
-	//this.geoposition().then(result => this.setState({value: result.coords.latitude}));
-    }*/
 
 
     loadFile(event) { 
@@ -73,10 +68,10 @@ class InputForm extends Component {
 	<button id="submit" style={{display: 'none'}} />
 
         <label htmlFor="attach" className="attachButton"><img src={ attach }></img></label>
-	<input type="file" style={{display: 'none'}} id="attach"/>
+	<input type="file" style={{display: 'none'}} onChange={this.onInputChange} id="attach"/>
 
 	<label htmlFor="geoposition" className="geoButton"><img src={ geoposition }></img></label>
-	<button id="geoposition" /*onClick={this.onGeopositionChange}*/  style={{display: 'none'}} />
+	<button id="geoposition" onClick={this.geoposition} onChange={this.onInputChange} style={{display: 'none'}} />
 
         </form>
 	);
