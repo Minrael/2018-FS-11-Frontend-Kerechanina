@@ -12,3 +12,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+#aut {
+
+	font-size: 40px;
+}
+
+#indPage {
+	color: #8e24aa;
+	display: flex;
+	flex-direction: column;
+}
+
+#linkChat {
+
+	font-size: 40px;
+}
+
+#Chats {
+	color: #8e24aa;
+	display: flex;
+	flex-direction: column;
+	font-size: 40px;
+
+}
+

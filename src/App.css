@@ -12,6 +12,8 @@
 	display: flex;
 }
 
+
+
 img{
 	padding: 4px 4px 4px 4px;
 	background: white;
@@ -20,7 +22,7 @@ img{
 	border: none;
 }
 
-nav{
+#locNav{
 	flex-basis: 80px;
 	background: #8e24aa;
 	width: 100%;
@@ -28,6 +30,19 @@ nav{
 	justify-content: flex-start;
 	align-items: center;
 	font-size: calc(10px + 2vmin);
+}
+
+
+#hNav{
+
+	flex-basis: 80px;
+	background: green;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: calc(10px + 2vmin);
+
 }
 
 input {
@@ -38,8 +53,8 @@ input {
 }
 
 body {
-	display: flex;
-	height: 100vh;
+	/*display: flex;
+	height: 100vh;*/
 
 }
 
