@@ -11,11 +11,13 @@ class InputForm extends Component {
       super(props);
       this.state = {
 		input: '',
-		file: 'I am not a file'	
+		file: ''	
       };
 
       this.onInputChange = this.onInputChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
+      this.geoposition = this.geoposition.bind(this);
+      this.loadFile = this.loadFile.bind(this);
     }
 
     onSubmit(event){
@@ -38,16 +40,14 @@ class InputForm extends Component {
     geoposition() {
 	function getPosition (opts) { 
 		return new Promise((resolve, reject) => { 
-			navigator.geolocation.getCurrentPosition(console.log, opts); 
+			navigator.geolocation.getCurrentPosition(resolve, opts); 
 
 		}); 
 	} 
 
 	getPosition().then((position) => {
 
-		/*this.setState({input: position.coords.latitude});
-		console.log(this.state.input);*/
-		console.log(position.coords.latitude);
+		this.setState({input: 'Мои координаты: ' + position.coords.latitude + ', ' + position.coords.longitude});
 	})
     }
 
@@ -57,9 +57,7 @@ class InputForm extends Component {
 	var reader = new FileReader(); 
 	var file = event.target.files[0]; 
 	reader.readAsDataURL(file); 
-	console.log('File: ' + file.name);
-	//console.log(this.state.file);
-	//this.props.updateFile('File: ' + file.name); 
+	this.props.updateMessage('File: ' + file.name); 
 
     }
 
@@ -78,7 +76,7 @@ class InputForm extends Component {
 	<input type="file" style={{display: 'none'}} onChange={this.loadFile} id="attach"/>
 
 	<label htmlFor="geoposition" className="geoButton"><img src={ geoposition } alt = "Geoposition button"></img></label>
-	<button id="geoposition" onClick={this.geoposition} onChange={this.onInputChange} style={{display: 'none'}} />
+	<button id="geoposition" onClick={this.geoposition} style={{display: 'none'}} />
 
         </form>
 	);

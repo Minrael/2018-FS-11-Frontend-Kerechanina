@@ -9,16 +9,9 @@ class Chat extends Component {
     constructor(props) {
       super(props);
 		this.state = {
-
-			text: '',
-			/*file: '',*/
-			/*geoposition: ''*/
-			
-			
+			text: ''	
 		}
      this.updateMessage = this.updateMessage.bind(this);
-   /*  this.updateFile = this.updateFile.bind(this);
-     this.updateGeo = this.updateGeo.bind(this);*/
     }
 
 
@@ -27,22 +20,12 @@ class Chat extends Component {
     }
 
 
-  /*  updateFile(file) {
-    	this.setState({file});
-    }*/
-
-   /* updateGeo(file) {
-    	this.setState({geoposition: 'geo'});
-    }*/
-
     render() {
         return (
 	    <div id = "app">
-
 		<nav id = "locNav" />
-		<MessageList txtMessage = {this.state.text} /*fileMessage = {this.state.file} geoMessage = {this.state.geoposition}*//>
-		<InputForm updateMessage = {this.updateMessage} /*updateFile = {this.updateFile} updateGeo = {this.updateGeo}*//>
-
+		<MessageList txtMessage = {this.state.text}/>
+		<InputForm updateMessage = {this.updateMessage}/>
 	    </div>
         );
       }
