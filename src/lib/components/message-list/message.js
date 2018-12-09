@@ -5,9 +5,6 @@ class Message extends Component {
 
     constructor(props) {
       super(props);
-		this.state = {
-			text: ''
-		}
     }
 
     render() {
@@ -17,6 +14,7 @@ class Message extends Component {
       return (
         <div id = "tmessage">
 	    <p> {this.props.txt} </p>
+	   
         </div>
 	);
     }

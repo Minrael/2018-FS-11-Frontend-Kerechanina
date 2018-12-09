@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './data.css';
 
 class File extends Component {
 
@@ -13,8 +13,9 @@ class File extends Component {
       const props = this.props;
 
       return (
-        <div className = {props.receiver}>
-		<img src={ props.imageUrl } />
+        <div id = "tData">
+		<p id = 'mesText'>{this.props.txt}</p>
+		<p id = 'mesTime'>{this.props.tm}</p>
         </div>
 	);
 
