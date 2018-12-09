@@ -3,7 +3,6 @@ import submit from "../../../static/mailsend_104372.png"
 import geoposition from "../../../static/-place_90615.png"
 import attach from "../../../static/attach-rotated_icon-icons.com_68593.png"
 import styles from "../../../App.css"
-import Message  from '../message-list/message.js';
 
 
 class InputForm extends Component {
@@ -21,7 +20,7 @@ class InputForm extends Component {
 
     onSubmit(event){
       event.preventDefault();
-      if (this.state.input != '') {
+      if (this.state.input !== '') {
 	this.props.updateMessage(this.state.input);
 	this.setState({input: ''});
       }
@@ -72,13 +71,13 @@ class InputForm extends Component {
           	<label>
 			<input type="text" name="input" value={this.state.input} onChange={this.onInputChange} placeholder = "Cообщение" />	
 		</label> 
-	<label htmlFor="submit" className="submitButton"><img src={ submit }></img></label>
+	<label htmlFor="submit" className="submitButton"><img src={ submit } alt = "Submit button"></img></label>
 	<button id="submit" style={{display: 'none'}} />
 
-        <label htmlFor="attach" className="attachButton"><img src={ attach }></img></label>
+        <label htmlFor="attach" className="attachButton"><img src={ attach } alt = "Attach button"></img></label>
 	<input type="file" style={{display: 'none'}} onChange={this.loadFile} id="attach"/>
 
-	<label htmlFor="geoposition" className="geoButton"><img src={ geoposition }></img></label>
+	<label htmlFor="geoposition" className="geoButton"><img src={ geoposition } alt = "Geoposition button"></img></label>
 	<button id="geoposition" onClick={this.geoposition} onChange={this.onInputChange} style={{display: 'none'}} />
 
         </form>

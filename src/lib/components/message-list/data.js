@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 import './data.css';
 
-class File extends Component {
-
-    constructor(props) {
-      super(props);
-    }
-
+class Data extends Component {
 
     render() {
-
-      const props = this.props;
 
       return (
         <div id = "tData">
@@ -22,4 +15,4 @@ class File extends Component {
 	}
 }
 
-export default File;
+export default Data;

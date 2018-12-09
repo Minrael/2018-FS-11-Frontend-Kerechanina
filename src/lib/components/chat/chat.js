@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import '../../App.css';
+import '../../../App.css';
 import './chat.css';
-import  MessageList  from '../components/message-list/message-list.js';
-import  InputForm  from '../components/input/input-form.js';
-import Message from '../components/message-list/message.js';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import  MessageList  from '../message-list/message-list.js';
+import  InputForm  from '../input/input-form.js';
 
 class Chat extends Component {
   
