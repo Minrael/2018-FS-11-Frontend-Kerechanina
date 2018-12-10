@@ -1,0 +1,32 @@
+#locNav{
+	flex-basis: 80px;
+	background: #8e24aa;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: calc(10px + 2vmin);
+}
+
+#app {
+
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+
+#input_form {
+	display: flex;
+}
+
+
+#message_list {
+	display: flex;
+	flex-basis: 100%;
+	width: 100%;
+	flex-direction: column;
+	font-size: 40px;
+}
+

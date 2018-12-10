@@ -1,0 +1,78 @@
+.App {
+	text-align: center;
+}
+
+:host {
+	display: inline-block;
+	border: 1px solid rgba(25, 25, 25, 0.32);
+}
+
+
+#root {
+	display: flex;
+}
+
+
+
+img{
+	padding: 4px 4px 4px 4px;
+	background: white;
+	height: 40px;
+	width: 40px;
+	border: none;
+}
+
+
+
+#hNav{
+
+	flex-basis: 80px;
+	background: green;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: calc(10px + 2vmin);
+
+}
+
+input {
+	border: 0;
+	outline: none;
+	width: 100%;
+	font-size: 40px;
+}
+
+body {
+	/*display: flex;
+	height: 100vh;*/
+
+}
+
+
+a {
+	color: #C691D4;
+}
+
+#tmessage {
+	background: #C691D4;
+	padding: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	align-self: flex-start;
+	font-size: 20px;
+	align-self: flex-end;
+}
+
+#friend_message {
+	background: #EDDEF2; 
+	padding: 15px; 
+	margin-top: 15px; 
+	margin-bottom: 15px; 
+	align-self: flex-start; 
+	font-size: 20px
+
+}
+
+
+
