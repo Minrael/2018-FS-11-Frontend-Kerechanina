@@ -43,12 +43,6 @@ input {
 	font-size: 40px;
 }
 
-body {
-	/*display: flex;
-	height: 100vh;*/
-
-}
-
 
 a {
 	color: #C691D4;
@@ -73,6 +67,87 @@ a {
 	font-size: 20px
 
 }
+
+
+#container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#navbar {
+    flex-basis: 70px;
+    position: relative;
+    background: #ffa084;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#sidebar {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#main {
+    flex-basis: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+#main div {
+    flex-basis: 100%;
+}
+
+#mainbody {
+    display: flex;
+    flex-basis: 100%;
+}
+
+#messages-list {
+    display: block;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    flex-basis: 100%;
+}
+
+#new-message {
+    flex-basis: 70px;
+    display: flex;
+}
+
+#new-message input{
+    flex-basis: 100%;
+    margin: 10px;
+    font-size: 20px;
+}
+
+
+
+#messages-list ul {
+    padding: 10px;
+    margin:  0px;
+}
+
+#messages-list p {
+    background: #ffe1e1;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: flex-end;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#container {
+    font-size: 20px;
+}
+
 
 
 

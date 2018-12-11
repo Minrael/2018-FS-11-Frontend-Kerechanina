@@ -8,12 +8,12 @@ const initialState = {
 
 // Reducer
 const reducer = (store = initialState, action) => {
-	if(action.type === 'INC_COUNTER	') {
+	if(action.type === 'INC_COUNTER') {
 	  return {
 		counter: store.counter + 1
 	  }
 	}
-	if(action.type === 'ADD_COUNTER	') {
+	if(action.type === 'ADD_COUNTER') {
 	  return {
 		counter: store.counter + action.value
 	  }
@@ -29,6 +29,13 @@ const reducer = (store = initialState, action) => {
 //Store
 const store = createStore(reducer);
 console.log('state before ->', store.getState());
+
+//Subscription
+
+store.subscribe(() => {
+  console.log('[Subscroption] new state ', store.getState());
+});
+
 
 
 //Action
@@ -52,4 +59,4 @@ store.dispatch({
 
 console.log('state after ->', store.getState());
 
-//Subscription
+

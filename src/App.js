@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import Chat from './lib/components/chat/chat.js';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Auth from './containers/Auth.js'
+import { MessagesList } from './containers/MessagesList'
+import { AddMessage } from './containers/AddMessage'
 
+
+/*const chat = (
+	<div id="container">
+		<MessagesList />
+		<AddMessage />
+	</div>
+);*/
 
 
 const IndexPage = () => {
@@ -11,6 +20,7 @@ const IndexPage = () => {
 	return (
 		<div id='indPage'>
 		    <div id='aut'>Привет, я будущая страница авторизации!</div>
+		    <Link to='/login'><div id='linkChat'>Auth</div></Link>
 		    <Link to='/chats/list'><div id='linkChat'>Перейти к списку диалогов</div></Link>
 		</div>
 	)
@@ -29,22 +39,26 @@ const ChatList = () => {
 }
 
 class App extends Component {
-  
 
-    render() {
+
+   render() {
 
         return(
 		<Router>
 		    <div>
 			<Route exact path='/' component={IndexPage} />
-          		<Route path='/chats/list' component={ChatList} />
-			<Route path='/chats/chat1' component={Chat} />
-			<Route exact path='/chats/chat2' component={Chat} />
+          		<Route exact path='/chats/list' component={ChatList} />
+        		<Route exact path='/login' exact component={Auth} />
+			<Route exact path='/chats/chat1' component={ () => <MessagesList chatid="0" />} />
+			<Route exact path='/chats/chat2' />
+		        	<AddMessage />
 		    </div>
       		</Router>
         )
+
     }
 }
+
 
 export default App;
 
