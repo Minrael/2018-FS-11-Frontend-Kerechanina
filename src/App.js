@@ -3,16 +3,9 @@ import './App.css';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Auth from './containers/Auth.js'
-import { MessagesList } from './containers/MessagesList'
-import { AddMessage } from './containers/AddMessage'
+import { Chat } from './containers/Chat'
 
 
-/*const chat = (
-	<div id="container">
-		<MessagesList />
-		<AddMessage />
-	</div>
-);*/
 
 
 const IndexPage = () => {
@@ -49,9 +42,9 @@ class App extends Component {
 			<Route exact path='/' component={IndexPage} />
           		<Route exact path='/chats/list' component={ChatList} />
         		<Route exact path='/login' exact component={Auth} />
-			<Route exact path='/chats/chat1' component={ () => <MessagesList chatid="0" />} />
-			<Route exact path='/chats/chat2' />
-		        	<AddMessage />
+			<Route exact path='/chats/chat1' component={ () => <Chat />} />
+			<Route exact path='/chats/chat2' component={ () => <Chat />} />
+
 		    </div>
       		</Router>
         )

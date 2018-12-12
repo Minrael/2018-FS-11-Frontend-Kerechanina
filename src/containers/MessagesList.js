@@ -3,9 +3,10 @@ import React from 'react'
 import Message from '../components/Message'
 
 const MessagesListComponent = ({ messages, chatid }) => (
-  <div>
-    <p>Hello, friend!</p>
-      {messages.map(message => (<Message key={message.id} {...message} />))}
+  <div id = "messagesList">
+    <div id = "chat_id"> {chatid} </div>
+    <p id = "friend_message">Hello, friend!</p>
+      {messages.map(message => (<Message key={message.id} message={message.message} />))}
   </div>
 )
 

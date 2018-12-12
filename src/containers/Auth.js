@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import input from '../components/input';
+import Input from '../components/input';
 
 class Auth extends Component {
 
@@ -28,11 +28,11 @@ class Auth extends Component {
 		.keys(this.state.loginForm)
 		.map(key => {
 		  const element = this.state.loginForm[key];
-		  return  <input 
+		  return  <Input 
 			key = {key} 
 			elementType = {element.elementType}
 			value = {element.value}
-			changed = {this.handleInput}  
+			changed = {(event) => this.handleInput(event, key)}  
 			placeholder= 'Login'/>
 	    });
 	    return(

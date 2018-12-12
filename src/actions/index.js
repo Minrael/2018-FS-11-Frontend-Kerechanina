@@ -18,7 +18,7 @@ export const user = (userName, isAuth) => ({
   isAuth
 })
 
-let messageIndex = 0
+let messageIndex = 1
 
 export const addMessage = (message) => ({
   type: types.ADD_MESSAGE,
