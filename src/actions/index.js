@@ -4,7 +4,7 @@ let chatIndex = 0
 
 export const chatList = (chatName, unreads) => ({
   type: types.CHAT_LIST,
-  id: chatIndex + 1,
+  id: chatIndex++,
   chatName,
   unreads 
 })
@@ -13,18 +13,21 @@ let userIndex = 0
 
 export const user = (userName, isAuth) => ({
   type: types.USER,
-  id: userIndex + 1,
+  id: userIndex++,
   userName,
-  isAuth
+  isAuth: true
 })
 
 let messageIndex = 1
 
 export const addMessage = (message) => ({
   type: types.ADD_MESSAGE,
-  id: messageIndex + 1,
+  id: messageIndex++,
   message
 })
+
+
+
 
 
 

@@ -11,7 +11,7 @@ class Auth extends Component {
 
 		   },
 		   password: {
-		     elementType: 'textarea',
+		     elementType: 'input',
 		     value: '',
 		   }
 		}

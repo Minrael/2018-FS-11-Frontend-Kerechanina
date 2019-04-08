@@ -1,106 +1,113 @@
 import { connect } from 'react-redux'
 import { addMessage } from '../actions'
-import React from 'react'
+import React, {Component} from 'react'
 import '../App.css';
 import submit from '../static/mailsend_104372.png'
 import geo from "../static/-place_90615.png"
 import attach from "../static/attach-rotated_icon-icons.com_68593.png"
+import emoji from "../static/beaming-face-with-smiling-eyes.png"
 
-function readFile(file) {
-  let fileReader = new FileReader();
-
-  return new Promise((resolve, reject) => {
-      fileReader.onload = e => {
-          let dataURI = e.target.result;
-          resolve(dataURI);
-      }
-      fileReader.readAsDataURL(file); 
-  })
-}; 
+import InputForm from "../components/InputForm"
+import ButtonForm from "../components/ButtonForm"
+import AttachForm from "../components/AttachForm"
 
 
-function loadFile(event) {
-  return new Promise((resolve, reject) => {
-    event.preventDefault();
-    var reader = new FileReader();
-    var file = event.target.files[0];
-    reader.readAsDataURL(file);
-
-    resolve(file.name);
-    
-  })
-
-};
-
-function geoposition() {
-
-  function getPosition (opts) {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, opts);
-    });
+class InputComponent extends Component { 
+  state = {
+    value: '',
+    isEmoji: false,
   };
-  return getPosition();
-};
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  };
 
-const InputComponent = (props) => {
-  let input;
+  handleSubmit() {
+    this.props.addMessage(this.state.value);
+    this.setState({value: ''});
+  };
 
-  return (
-    <section id="newMessage">
-      <input
-        onKeyPress={(e) => {
-        if (e.key === 'Enter' & input.value !== '') {
-          props.dispatch(input.value);
-          input.value = ''
+  handleEmoji(event){
+    //console.log(':emoji:');
+    //console.log(this.state.value);
+    this.setState({value: this.state.value + "::emoji::"});
+  };
+
+  geoposition() {
+    function getPosition (opts) {
+      return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, opts);
+      });
+    };
+    return getPosition();
+  };
+
+  handleGeoposition(event){
+    this.geoposition().then((result) => {
+      this.setState({value: 'Мои координаты: ' + result.coords.latitude + ', ' + result.coords.longitude});
+    })
+  };
+
+  readFile(file) {
+    let fileReader = new FileReader();
+
+    return new Promise((resolve, reject) => {
+        fileReader.onload = e => {
+            let dataURI = e.target.result;
+            resolve(dataURI);
         }
-      }}
-        type="text"
-	placeholder = "Cообщение"
-        ref={(node) => {
-        input = node
-      }}
-      />
+        fileReader.readAsDataURL(file); 
+    })
+  }; 
 
-      <button id="submit"
-	onClick={(e) => {
-        props.dispatch(input.value);
-        input.value = ''
-      }}>
-        <img alt="" className="Button" src={ submit }></img>
-      </button>
+  loadFile(event) {
+    return new Promise((resolve, reject) => {
+      event.preventDefault();
+      let reader = new FileReader();
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
 
-      <button>
-        <label htmlFor="attach" className="Button">
-          <img alt="" id="Button" src={ attach }></img>
-        </label>
-      </button>
+      resolve(file.name);
+      
+    })
 
-	<input type="file"  id="attach"
-	  style={{display: 'none'}} 
-	  onChange={(event) => { 
-        	loadFile(event).then( function(result, bool) {       
-            	props.dispatch(result);
-        });
-      }}/>
+  };
 
+  handleFile(event) {
+    this.loadFile(event).then((result) => {       
+      this.setState({value: result});
+    });
+        
+  }
 
-      <button id="geo"  onClick={(event) => {
-        geoposition().then(function(result) {
-          props.dispatch('Мои координаты: ' + result.coords.latitude + ', ' + result.coords.longitude);
-        })
-      }}>
-        <img alt="" className="Button" src={ geo }></img>
-      </button>
-    </section>
-  )
+  render() {
+    let input;
+    let props;
+    return (
+      <section id="newMessage">
+        <InputForm value={this.state.value} handleChange={(e) => this.handleChange(e)} />
+        <ButtonForm id="emoji" onClick={(e) => this.handleEmoji(e)} src={ emoji } />
+        <ButtonForm id="submit" onClick={(e) => this.handleSubmit()} src={ submit } />
+        <AttachForm onChange={(e) => this.handleFile(e)} src={ attach }/>
+        <ButtonForm id="geo" onClick={(e) => this.handleGeoposition(e)} src={ geo } />
+      </section>
+    )
+  }
 }
 
-const mapDispatchToProps = dispatch => ({
-  dispatch: (message) => {
-    dispatch(addMessage(message))
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addMessage: (message) => dispatch(addMessage(message))
   }
-})
+};
+
+
+const mapStateToProps = state => {
+  return {
+    msg: state.messages,
+  }
+}
 
 
 export const AddMessage = connect(() => ({}), mapDispatchToProps)(InputComponent)

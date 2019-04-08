@@ -9,7 +9,6 @@ import { Chat } from './containers/Chat'
 
 
 const IndexPage = () => {
-
 	return (
 		<div id='indPage'>
 		    <div id='aut'>Привет, я будущая страница авторизации!</div>
