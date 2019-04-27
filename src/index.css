@@ -38,3 +38,16 @@ code {
 
 }
 
+
+.smile-face {
+    background-image: url('./static/slightly-smiling-face.png?sprite');
+}
+.sad-face {
+    background-image: url('./static/slightly-frowning-face.png?sprite');
+}
+.surprised-face {
+    background-image: url('./static/hushed-face.png?sprite');
+}
+.happy-face {
+    background-image: url('./static/beaming-face-with-smiling-eyes.png?sprite');
+}

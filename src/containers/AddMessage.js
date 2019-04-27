@@ -5,11 +5,16 @@ import '../App.css';
 import submit from '../static/mailsend_104372.png'
 import geo from "../static/-place_90615.png"
 import attach from "../static/attach-rotated_icon-icons.com_68593.png"
-import emoji from "../static/beaming-face-with-smiling-eyes.png"
+import emoji from "../static/mbrismileface_99462.png"
 
 import InputForm from "../components/InputForm"
 import ButtonForm from "../components/ButtonForm"
 import AttachForm from "../components/AttachForm"
+
+import smile from "../static/slightly-smiling-face.png"
+import sad from "../static/slightly-frowning-face.png"
+
+import EmojiBar from "../components/emoji.js"
 
 
 class InputComponent extends Component { 
@@ -28,10 +33,14 @@ class InputComponent extends Component {
   };
 
   handleEmoji(event){
-    //console.log(':emoji:');
-    //console.log(this.state.value);
-    this.setState({value: this.state.value + "::emoji::"});
+    this.setState({value: this.state.value + ":emoji:"});
+    this.setState({isEmoji: true});
+    console.log(this.state.isEmoji);
   };
+
+  handleEmojiSplit(event){
+    
+  }
 
   geoposition() {
     function getPosition (opts) {
@@ -85,6 +94,7 @@ class InputComponent extends Component {
     let props;
     return (
       <section id="newMessage">
+        {this.state.isEmoji === true ? <EmojiBar/>: <div/>}
         <InputForm value={this.state.value} handleChange={(e) => this.handleChange(e)} />
         <ButtonForm id="emoji" onClick={(e) => this.handleEmoji(e)} src={ emoji } />
         <ButtonForm id="submit" onClick={(e) => this.handleSubmit()} src={ submit } />

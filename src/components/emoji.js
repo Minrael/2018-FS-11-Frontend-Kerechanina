@@ -1,20 +1,23 @@
-/*import React from 'react';
-import * as actions from '../../store/actions'
+import React from 'react';
+import styles from '../index.css';
 
-
-const emoji = props => {
+const Emoji = props => {
   return (
-    <i className={props.type} onClick={() => props.on(props.type)}></i>
+    <img className={props.name}/>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    msg: state.msg
-  }
-};
+function EmojiBar(props) {
+    return(
+        <section>
+            <Emoji name='smile-face'/>
+            <Emoji name='sad-face'/>
+            <Emoji name='surprised-face'/>
+            <Emoji name='happy-face'/>
+        </section>
+    );
+}
 
-const mapDispatchToProps = (dispatch) => {
-  return  {
-    AddEmoji: (emojiCode)
-*/
+
+export default EmojiBar;
+
