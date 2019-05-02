@@ -38,6 +38,13 @@ code {
 
 }
 
+.emoji {
+  background: no-repeat;
+  height: 64px;
+  width: 64px;
+  display: inline-block;
+}
+
 
 .smile-face {
     background-image: url('./static/slightly-smiling-face.png?sprite');
